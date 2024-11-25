@@ -1,7 +1,32 @@
 body {
   font-family: sans-serif;
   color: #666;
-  background-color: #f1f1f1;
+  background-color: #ff0000;
   font-size: x-large;
   margin: 1em;
+}
+
+h4 {
+  margin-bottom: 10px;
+}
+
+#todo-form {
+  padding: 10px;
+  background-color: blue;
+}
+
+main {
+  display: flex;
+}
+
+h4 {
+  color: black;
+}
+
+label {
+  color: black;
+}
+
+h1 {
+  color: black;
 }
