@@ -14,13 +14,16 @@ class Seeder
 
   def self.create_tables
     db.execute('CREATE TABLE todo (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
                 title TEXT NOT NULL,
                 beskrivning TEXT,
-                subject TEXT)')
+                subject TEXT,
+                ongoing BOOLEAN NOT NULL,
+                importance INTEGER NOT NULL)')
   end
 
   def self.populate_tables
-    db.execute('INSERT INTO todo (title, beskrivning, subject) VALUES ("lär dig pythagoras sats",   "Jag vet, det är svårt att förstå", "Matematik")')
+    db.execute('INSERT INTO todo (title, beskrivning, subject, ongoing, importance) VALUES ("lär dig pythagoras sats",   "Jag vet, det är svårt att förstå", "Matematik", 1, 5)')
   end
 
   private

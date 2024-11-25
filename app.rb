@@ -1,7 +1,7 @@
 class App < Sinatra::Base
 
     get '/' do
-        erb(:"index")
+        redirect "/tasks"
     end
 
     def db
@@ -13,18 +13,22 @@ class App < Sinatra::Base
         return @db
     end
 
-    get '/task' do
+    get '/tasks' do
         @tasks = db.execute('SELECT * FROM todo')
-        @ongoing_tasks = db.execute('SELECT * FROM todo ')
+        @ongoing_tasks = db.execute('SELECT * FROM todo WHERE ongoing = 1 ORDER BY importance')
+        @completed_tasks = db.execute('SELECT * FROM todo WHERE ongoing = 0 ORDER BY importance')
+        erb(:"index")
     end
 
     post '/todo/' do
-        db.execute("INSERT INTO todo (title, beskrivning, subject) VALUES(?,?,?)", 
+        db.execute("INSERT INTO todo (title, beskrivning, subject, ongoing, importance) VALUES(?,?,?,?,?)", 
         [   
             params["title"],
             params["beskrivning"],
-            params["subject"]
+            params["subject"],
+            1,
+            params["importance"]
         ])
-        redirect ""
+        redirect "/"
     end
 end
