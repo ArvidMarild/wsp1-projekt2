@@ -34,3 +34,22 @@ h1 {
 ul {
   background-color: aquamarine;
 }
+
+#edit {
+  background-color: yellow;
+}
+
+#complete {
+  background-color: green;
+}
+
+h3 {
+  color: black;
+}
+
+h5 {
+  color: black;
+  margin-top: 0;
+  font-size: 1rem;
+}
+

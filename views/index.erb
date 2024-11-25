@@ -47,15 +47,14 @@
     <ul>
       <% @ongoing_tasks.each do |task|%>
         <li>
-          <h3><%= task['title'] %></h3>
-          <h4><%= task['beskrivning'] %></h4>
-          <h6><%= task['subject'] %></h6>
+          <h3><%= task['title'] %> - <%= task['subject'] %></h3>
+          <h5><%= task['beskrivning'] %></h5>
         </li> 
         <form action="/tasks/<%=task["id"]%>/edit" method="get">
-          <input type="submit" value="Edit Task" style="color: rgb(235, 200, 2);">
+          <input id="edit" type="submit" value="Edit Task">
         </form>
         <form action="/tasks/<%=task["id"]%>/complete" method="post">
-          <input type="submit" value="Complete Task" style="color: rgb(0, 116, 17);">
+          <input id="complete" type="submit" value="Complete Task">
         </form>
       <% end %>
     </ul>
