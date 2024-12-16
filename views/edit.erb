@@ -1,0 +1,23 @@
+<form action="/tasks/<%= @task["id"] %>/update" method="post">
+  <label for="title">Title:</label><br />
+  <input type="text" id="title" name="title" value="<%= @task['title'] %>" /><br />
+  
+  <label for="Beskrivning">Beskrivning:</label><br />
+  <input type="text" id="Beskrivning" name="beskrivning" value="<%= @task['beskrivning'] %>" /><br />
+  
+  <label for="Kategori">Kategori:</label><br />
+  <select name="subject" id="subject">
+        <option value="Matematik">Matematik</option>
+        <option value="Svenska">Svenska</option>
+        <option value="Hälsa">Hälsa</option>
+  </select><br />
+
+  <label for="importance">Viktighet:</label><br />
+  <select name="importance" id="importance">
+    <% (1..5).each do |i| %>
+      <option value="<%= i %>"><%= i %></option>
+    <% end %>
+  </select><br />
+  
+  <input type="submit" />
+</form>

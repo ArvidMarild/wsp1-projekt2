@@ -15,8 +15,19 @@ h4 {
   background-color: blue;
 }
 
+#login {
+  background-color: blue;
+  padding: 10px;
+}
+
+#sign-up {
+  background-color: blue;
+  padding: 10px;
+}
+
 main {
   display: flex;
+  justify-content: space-between;
 }
 
 h4 {
