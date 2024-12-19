@@ -94,6 +94,15 @@ class App < Sinatra::Base
         session.clear
         redirect '/'
       end
+    
+    post '/sign-up' do
+      db.execute('INSERT INTO users (username, password) VALUES(?,?)',
+    [ params['new_username'],
+      params['new_password']
+    ])
+    current_user=params[:new_username]
+    redirect '/'
+    end
 
     get '/tasks' do
         @tasks = db.execute('SELECT * FROM todo')

@@ -21,7 +21,8 @@ class Seeder
                 beskrivning TEXT,
                 subject TEXT,
                 ongoing BOOLEAN NOT NULL,
-                importance INTEGER NOT NULL)')
+                importance INTEGER NOT NULL,
+                user TEXT NOT NULL)')
 
     db.execute('CREATE TABLE users (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -30,7 +31,7 @@ class Seeder
   end
 
   def self.populate_tables
-    db.execute('INSERT INTO todo (title, beskrivning, subject, ongoing, importance) VALUES ("lär dig pythagoras sats",   "Jag vet, det är svårt att förstå", "Matematik", 1, 5)')
+    db.execute('INSERT INTO todo (title, beskrivning, subject, ongoing, importance, user) VALUES ("lär dig pythagoras sats",   "Jag vet, det är svårt att förstå", "Matematik", 1, 5, "arvid")')
     password_hashed = BCrypt::Password.create('arvid12345')
     p "Storing hashed version of password to db. Clear text never saved. #{password_hashed}"
     db.execute('INSERT INTO users (username, password) VALUES (?, ?)', ['arvid', password_hashed])
@@ -42,13 +43,6 @@ class Seeder
     @db = SQLite3::Database.new('db/todo.sqlite')
     @db.results_as_hash = true
     @db
-  end
-
-  def self.db2
-    return @db2 if @db2
-    @db2 = SQLite3::Database.new('db/loginexample.sqlite')
-    @db2.results_as_hash = true
-    @db2
   end
 end
 
